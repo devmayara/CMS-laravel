@@ -50,7 +50,23 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+        $data = $request->only([
+            'name',
+            'email',
+            'password',
+            'password_confirmation'
+        ]);
+        $validator = $this->validator($data);
 
+        if ($validator->fails()) {
+            return redirect()->route('register')
+            ->withErrors($validator)
+            ->withInput();
+        }
+
+        $user = $this->create($data);
+        Auth::login($user);
+        return redirect()->route('admin');
     }
 
     /**
@@ -62,9 +78,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
         ]);
     }
 
