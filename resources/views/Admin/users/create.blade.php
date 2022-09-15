@@ -9,12 +9,12 @@
 @section('content')
 
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="alert alert-danger alert-dismissible">
             <ul>
-                <h4>
+                <h5>
                     <i class="icon fas fa-ban"></i>
                     Atenção!
-                </h4>
+                </h5>
                 @foreach ($errors->all() as $error)
                     <li>{{$error}}</li>
                 @endforeach
@@ -22,49 +22,47 @@
         </div>
     @endif
 
-    <form class="form-horizontal" action="{{route('users.store')}}" method="POST">
-        @csrf
-        <div class="box-bode">
-            <div class="form-group">
-                <div class="row">
-                    <label class="col-sm-2 control-label" for="">Nome Completo</label>
+    <div class="card">
+        <div class="card-body">
+            <form class="form-horizontal" action="{{route('users.store')}}" method="POST">
+                @csrf
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="">Nome completo</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="name" value="{{old('name')}}">
+                        <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{old('name')}}">
+                        <span class="error invalid-feedback">Por favor, insira seu nome completo.</span>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <label class="col-sm-2 control-label" for="">E-mail</label>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="">E-mail</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="email" name="email" value="{{old('email')}}">
+                        <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" value="{{old('email')}}">
+                        <span class="error invalid-feedback">Por favor, insira um endereço de e-mail válido.</span>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <label class="col-sm-2 control-label" for="">Senha</label>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="">Senha</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="password" name="password">
+                        <input class="form-control @error('password') is-invalid @enderror" type="password" name="password">
+                        <span class="error invalid-feedback">Por favor, sua senha deve ter mais de 4 caracteres.</span>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <label class="col-sm-2 control-label" for="">Confirmação da Senha</label>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="">Confirmação da senha</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="password" name="password_confirmation">
+                        <input class="form-control @error('password') is-invalid @enderror" type="password" name="password_confirmation">
+                        <span class="error invalid-feedback">Por favor, tenha certeza que digitou a mesma senha.</span>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <label class="col-sm-2 control-label" for=""></label>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for=""></label>
                     <div class="col-sm-10">
-                        <input class="btn btn-success" type="submit" value="Cadastrar">
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
+        <div class="card-footer">
+            <input class="btn btn-success float-right" type="submit" value="Cadastrar">
+        </div>
+    </div>
 @endsection
