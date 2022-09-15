@@ -299,26 +299,31 @@ return [
         [
             'text'        => 'Deshboard',
             'url'         => 'painel',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-fw fa-tachometer-alt',
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
         [
             'text'        => 'Minhas Páginas',
             'url'         => 'painel/pages',
-            'icon'        => 'far fa-fw fa-file'
+            'icon'        => 'fas fa-fw fa-copy'
         ],
         [
             'text'        => 'Meus Usuários',
             'url'         => 'painel/users',
-            'icon'        => 'far fa-fw fa-user',
+            'icon'        => 'fas fa-fw fa-users',
             'can'         => 'edit-users'
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Configurações'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text'        => 'Configurações do Site',
+            'url'         => 'painel/settings',
+            'icon'        => 'fas fa-th'
+        ],
+        [
+            'text'        => 'Meu Perfil',
+            'url'         => 'painel/profile',
+            'icon'        => 'far fa-fw fa-user'
         ],
         [
             'text' => 'Sair',
