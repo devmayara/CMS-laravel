@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Setting;
 
 class SettingController extends Controller
 {
@@ -14,12 +15,17 @@ class SettingController extends Controller
 
     public function index()
     {
-        return view('admin.settings.index');
+        $settings = [];
+
+        $dbsettings = Setting::get();
+
+        foreach($dbsettings as $dbsetting) {
+            $settings[$dbsetting['name']] = $dbsetting['content'];
+        }
+
+        return view('admin.settings.index', [
+            'settings' => $settings
+        ]);
     }
 
-    public function save()
-    {
-        return view('admin.settings.index');
-
-    }
 }
