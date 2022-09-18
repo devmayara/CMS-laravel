@@ -7,6 +7,21 @@
 @endsection
 
 @section('content')
+
+@if ($errors->any())
+    <div class="alert alert-danger alert-dismissible">
+        <ul>
+            <h5>
+                <i class="icon fas fa-ban"></i>
+                Atenção!
+            </h5>
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
     <div class="card">
         <form class="form-horizontal" action="{{route('settings.save')}}" method="POST">
             @csrf
