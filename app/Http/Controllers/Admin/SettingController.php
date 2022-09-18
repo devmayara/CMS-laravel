@@ -41,16 +41,22 @@ class SettingController extends Controller
             ->withErrors($validator);
         }
 
-        echo 'salvando';
+        foreach($data as $item => $value) {
+            Setting::where('name', $item)
+            ->update([
+                'content' => $value
+            ]);
+        }
 
-        // return redirect()route('settings');
+        return redirect()->route('settings')
+        ->with('warning', 'Informações atualizadas com sucesso!');
     }
 
     protected function validator($data)
     {
         return Validator::make($data, [
             'title' => ['string', 'max:100'],
-            'subtitle' => ['string'],
+            'subtitle' => ['string', 'max:100'],
             'email' => ['string', 'email'],
             'bgcolor' => ['string', 'regex:/#[a-zA-Z0-9]{6}/i'],
             'textcolor' => ['string', 'regex:/#[a-zA-Z0-9]{6}/i'],

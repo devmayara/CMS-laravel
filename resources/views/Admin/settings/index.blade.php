@@ -22,6 +22,12 @@
     </div>
 @endif
 
+@if (session('warning'))
+<div class="alert alert-success">
+    {{session('warning')}}
+</div>
+@endif
+
     <div class="card">
         <form class="form-horizontal" action="{{route('settings.save')}}" method="POST">
             @csrf
