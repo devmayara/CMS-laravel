@@ -22,6 +22,10 @@
         </div>
     @endif
 
+    <style>
+        .tox-notifications-container{ display: none !important; }
+    </style>
+
     <div class="card">
         <form class="form-horizontal" action="{{route('pages.update', ['page'=>$page->id])}}" method="POST">
             @csrf
@@ -37,7 +41,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label" for="">Corpo</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" name="body">{{$page->body}}</textarea>
+                        <textarea class="form-control bodyfield" name="body">{{$page->body}}</textarea>
                     </div>
                 </div>
             </div>
@@ -46,4 +50,19 @@
             </div>
         </form>
     </div>
+
+    <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js' referrerpolicy='origin'></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea.bodyfield',
+            height:300,
+            menubar: false,
+            plugins:['link', 'table', 'image', 'autoresize', 'lists'],
+            toolbar:'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | table | link image | bullist numlist',
+            content_css:[
+                '{{asset('assets/css/content.css')}}'
+            ]
+        });
+    </script>
+
 @endsection
