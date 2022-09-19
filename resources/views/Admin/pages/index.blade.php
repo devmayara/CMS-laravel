@@ -27,9 +27,9 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th width="50">ID</th>
                         <th>Título</th>
-                        <th>Ações</th>
+                        <th width="200">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +38,7 @@
                         <td>{{$page->id}}</td>
                         <td>{{$page->title}}</td>
                         <td>
+                            <a class="btn btn-sm btn-success" href="" target="_blank">Ver</a>
                             <a href="{{ route('pages.edit', ['page' => $page->id]) }}" class="btn btn-sm btn-info">Editar</a>
 
                             <form class="d-inline" action="{{ route('pages.destroy', ['page' => $page->id]) }}" method="POST" onsubmit="return confirm('Você tem certeza que deseja excluir o usuário?')">
