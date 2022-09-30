@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Visitor;
+use App\Models\Page;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,6 +17,30 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('admin.home');
+        $visitsCount = 0;
+        $onlineCount = 0;
+        $pageCount = 0;
+        $userCount = 0;
+
+        // Contagem de Visitantes
+        $visitsCount = Visitor::count();
+
+        // Contagem de Usuários Online
+        $datelimit = date('Y-m-d H:i:s', strtotime('-5 minutes'));
+        $onlineList = Visitor::select('ip')->where('date_access', '>=', $datelimit)->groupBy('ip')->get();
+        $onlineCount = count($onlineList);
+
+        // Contagem de Páginas
+        $pageCount = Page::count();
+
+        // Contagem de Usuários
+        $userCount = User::count();
+
+        return view('admin.home', [
+            'visitsCount' => $visitsCount,
+            'onlineCount' => $onlineCount,
+            'pageCount' => $pageCount,
+            'userCount' => $userCount
+        ]);
     }
 }

@@ -11,7 +11,7 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>999</h3>
+                    <h3>{{$visitsCount}}</h3>
                     <p>Visitantes</p>
                 </div>
                 <div class="icon">
@@ -22,7 +22,7 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>999</h3>
+                    <h3>{{$onlineCount}}</h3>
                     <p>Usuários Online</p>
                 </div>
                 <div class="icon">
@@ -33,7 +33,7 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>999</h3>
+                    <h3>{{$pageCount}}</h3>
                     <p>Páginas</p>
                 </div>
                 <div class="icon">
@@ -44,7 +44,7 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>999</h3>
+                    <h3>{{$userCount}}</h3>
                     <p>Usuários</p>
                 </div>
                 <div class="icon">
