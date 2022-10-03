@@ -18,7 +18,7 @@
 </div>
 <!-- /bradcam_area  -->
 
-<div class="container my-4">
+<div class="container my-5">
     {!! $page['body'] !!}
 </div>
 
